@@ -6,6 +6,7 @@ import Counter from './container/Counter';
 import CounterFun from './container/CounterFun';
 import Coursefun from './container/Coursefun';
 import CourseClass from './container/CourseClass';
+import Changebac from './container/Changebac';
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
       <ContryClass /> */}
       {/* <Counter /> 
       <CounterFun /> */}
+      <Changebac />
     </div>
   );
 }
