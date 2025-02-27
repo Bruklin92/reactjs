@@ -1,19 +1,20 @@
 import React, { useState, useEffect } from 'react';
 
 function Changebac(props) {
-    const [color, setColor] = useState("Blue")
+    const [color, setColor] = useState(false)
 
-    const click = () => {
-        setColor(color);
+    const handleTheam = () => {
+        setColor(!color)
     }
 
-    useEffect(()=>{
-        document.body.style.backgroundColor = color
-    }, [color])
-
     return (
-        <div>
-            <button onClick={() =>{click("yellow")}}>Change Color</button>
+        <div style={{
+            backgroundColor: !color ? 'black' : 'white', 
+            color: !color ? 'white' : 'black',
+            height: '100vh'
+        }}>
+            <h2 id='demo'>Change Theam</h2>
+            <button onClick={handleTheam}>Change Color</button>
         </div>
     );
 }
