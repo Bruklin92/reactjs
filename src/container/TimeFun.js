@@ -1,30 +1,28 @@
-import React, { Component, useState } from 'react';
+import React, { Component, useEffect, useState } from 'react';
 
 function TimeClass(props) {
+    //1.
     const [time, settime] = useState(new Date());
-
-    tick = () => {
-        settime(new Date());
-    }
-
-    const componentDidMount = () => {
-        setInterval(() => {
-            tick();
+    
+    useEffect(() => {
+        //3.componentDidMount    //4.componentDidUpdate
+        const timeref = setInterval(() => {
+            settime(new Date());
         })
-    }
 
-    const componentDidUpdate = (prevProps, prevState) => {
-        if (time !== prevState.settime) {
-            console.log("componentDidUpdate Called");
+        //5.componentWillUnmount
+        return () => {
+            clearInterval(timeref);
         }
-    }
-
+    }, [time])
+ 
+    //2. 
     return (
         <div>
             <h2>Time:</h2>
             <p>{time.toLocaleTimeString()}</p>
         </div>
     );
-}
+} 
 
 export default TimeClass;

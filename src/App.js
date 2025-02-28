@@ -9,6 +9,8 @@ import CourseClass from './container/CourseClass';
 import Changebac from './container/Changebac';
 import ChangebacClass from './container/ChangebacClass';
 import Time from './container/Time';
+import TimeClass from './container/TimeFun';
+import Product from './container/Product';
 
 function App() {
   return (
@@ -21,7 +23,9 @@ function App() {
       {/* <CounterFun /> */}
       {/* <Changebac /> */}
       {/* <ChangebacClass /> */}
-      <Time />
+      {/* <Time /> */}
+      {/* <TimeClass /> */}
+      <Product />
     </div>
   );
 }
