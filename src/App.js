@@ -11,7 +11,6 @@ import ChangebacClass from './container/ChangebacClass';
 import Time from './container/Time';
 import TimeClass from './container/TimeFun';
 import Product from './container/Product';
-import Task1 from './container/Task1';
 
 function App() {
   return (
@@ -27,7 +26,6 @@ function App() {
       {/* <Time /> */}
       {/* <TimeClass /> */}
       <Product />
-      {/* <Task1 /> */}
     </div>
   );
 }

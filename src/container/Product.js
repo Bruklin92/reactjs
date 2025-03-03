@@ -1,45 +1,65 @@
-import { logDOM } from '@testing-library/dom';
 import React, { useEffect, useState } from 'react';
 
 function Product(props) {
     const [data, setdata] = useState([]);
+    const [serch, setSearch] = useState('');
     const [sort, setSort] = useState('');
+    const [category, setCaragry] = useState('');
 
     const getdata = async () => {
         const responce = await fetch("https://fakestoreapi.com/products");
         const pdata = await responce.json()
+
+        const uniqdata = [];
         setdata(pdata)
+        pdata.map((v) => {
+            if (!uniqdata.includes(v.category)) {
+                uniqdata.push(v.category);
+            }             
+        })   
+        console.log(uniqdata);
+
+       
+      
+        
     }
 
     useEffect(() => {
         getdata();
-    })
+    }, [])
 
-    const handleSort = (e) => {
-        setSort(e);
-        console.log(e);
+    const filterdata = () => {
+        const fdata = data.filter((v) =>
+            v.title.toLowerCase().includes(serch.toLowerCase()) ||
+            v.description.toLowerCase().includes(serch.toLowerCase()) ||
+            v.price.toString().includes(serch)
+        );
 
-        let fdata = data.filter((v, i) => {
-            v.title.toLowerCase() || v.price.toString();
+        const sdata = fdata.sort((a, b) => {
+            if (sort === 'a_z') {
+                return a.title.localeCompare(b.title)
+            } else if (sort === "z_a") {
+                return b.title.localeCompare(a.title)
+            } else if (sort === "h_l") {
+                return b.price - a.price
+            } else if (sort === "l_h") {
+                return a.price - b.price
+            }
         })
-        console.log(fdata);
 
-        if (sort === "a_z") {
-            fdata.sort((a, b) => a.title.localeCompare(b.title));
-        } else if (sort === "z_a") {
-            fdata.sort((a, b) => b.title.localeCompare(a.title));
-        } else if (sort === "h_l") {
-            fdata.sort((a, b) => a.price - b.price);
-        } else if (sort === "l_h") {
-            fdata.sort((a, b) => b.price - a.price);
-        }
+        return sdata;
     }
+
+    const finaldata = filterdata();
 
     return (
         <div className='container'>
             <h2 style={{ textAlign: "center" }}>Product</h2>
+
+            <input type='search' placeholder='Search...' onChange={(e) => setSearch(e.target.value)}></input>
+
             <div>
-                <select name="" id="" onChange={(e) => handleSort(e.target.value)}>
+                <select name="" id="" onChange={(e) => setSort(e.target.value)}>
                     <option value="0">--Select to sort</option>
                     <option value="a_z">A - Z</option>
                     <option value="z_a">Z - A</option>
@@ -51,7 +71,7 @@ function Product(props) {
                 data.length > 0 ?
                     <div className='row' style={{ textAlign: "center" }}>
                         {
-                            data.map((v) => (
+                            finaldata.map((v) => (
                                 <div className="card col-3" style={{ border: "2px solid black", borderRadius: "20px", margin: "10px" }} >
                                     <img src={v.image} className="card-img-top" alt="..." style={{ width: "100%", height: "300px" }} />
                                     <div className="card-body">
