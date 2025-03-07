@@ -51,7 +51,6 @@ function Product(props) {
 
             return cdata;
         }
-
         return sdata;
     }
 
@@ -73,6 +72,7 @@ function Product(props) {
             <button onClick={() => setSelectCat()}
                 style={{
                     backgroundColor: selectcat ? "white" : "green",
+                    color: selectcat ? "black" : "white",
                 }}>All</button>
 
             <div>

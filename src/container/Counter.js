@@ -1,4 +1,7 @@
 import React, { Component } from 'react';
+import { Container } from 'react-bootstrap';
+import Button from 'react-bootstrap/Button';
+
 
 class Counter extends Component {
     constructor(props) {
@@ -22,12 +25,12 @@ class Counter extends Component {
 
     render() {
         return (
-            <div>
+            <Container>
                 <h2>Class based Counter</h2>
                 <p>Count: {this.state.count}</p>
-                <button onClick={this.Addcount} disabled={this.state.count === 5 ? true : false}>+</button>
-                <button onClick={this.MineCount} disabled={this.state.count === 0 ? true : false}>-</button>
-            </div>
+                <Button onClick={this.Addcount} disabled={this.state.count === 5 ? true : false} variant="dark">+</Button>
+                <Button onClick={this.MineCount} disabled={this.state.count === 0 ? true : false} variant="light">-</Button>
+            </Container>
         );
     }
 }
