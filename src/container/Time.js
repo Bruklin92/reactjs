@@ -8,7 +8,7 @@ class Time extends Component {
         this.state = {
             time: new Date()
         }
-    }
+    }w
 
     tick = () => {
         this.setState({

@@ -1,4 +1,90 @@
-.galImg {
-    width: 100%;
-    height: 100%;
+header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 9999;
+}
+
+header a {
+  color: white;
+  text-decoration: none;
+  margin-right: 25px;
+  font-size: 18px;
+}
+
+.galImg img {
+  width: 100%;
+  height: 860px;
+}
+
+.gap {
+  row-gap: 30px;
+}
+
+.galImg1 img {
+  width: 100%;
+  height: 450px;
+}
+
+.galImg2 img {
+  width: 100%;
+  height: 380px;
+}
+
+.galImg3 img {
+  width: 100%;
+  height: 380px;
+}
+
+.galary {
+  position: relative;
+}
+
+.galary::before {
+  content: "";
+  background-color: rgba(0, 0, 0, 0.5);
+  inset: 0;
+  position: absolute;
+}
+
+.cname {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  color: white;
+}
+
+.navheader {
+  display: flex;
+  justify-content: space-between;
+}
+
+.herosec {
+  background-image: url(/public/img/i4.jpg);
+  width: 100%;
+  height: 100vh;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+  position: relative;
+}
+
+.herosec::before {
+  content: '';
+  background-color: rgba(0, 0, 0, 0.4);
+  inset: 0;
+  position: absolute;
+}
+
+.mainhero {
+  color: white;
+  text-align: center;
+  z-index: 999;
+  position: relative;
+  padding-top: 250px;
+}
+
+.mainhero span {
+  font-size: 20px;
+  text-decoration: underline; 
 }
